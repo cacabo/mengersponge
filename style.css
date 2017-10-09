@@ -1,0 +1,22 @@
+.pad-1 {
+  padding: 1rem;
+}
+
+.marg-bot-0 {
+  margin-bottom: 0rem !important;
+}
+
+.white {
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden !important;
+}
+
+canvas {
+  background: #FFFFFF;
+}
