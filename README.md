@@ -6,8 +6,11 @@ var last = 2;
 ```
 You can take a look at it [here.](http://mengersponge.s3-website-us-east-1.amazonaws.com/)
 
+![Example third level cube](https://i.imgur.com/ukcQWNN.png)
+
+### Local customization
 Higher levels of `last` work, although cause the browser to lag. If you wish, you could download the files and alter the value of `last` to observe said sponge.
-* `last = 0` basic cube, first level menger sponge
+* `last = 0` first level (unit cube)
 * `last = 1` second level
 * `last = 2` third level
 * `last = n` nth level
@@ -24,11 +27,10 @@ If there is an issue with display depending on your screen resolution or depth o
 * `style.css`
   * Basic styling
 * `three.js`
-  * Implementation of the Menger Sponge
-    * Basic setup for the 3D environment
-    * `render()`
-      * Function to render the sponge as it rotates
-    *  `mengerSponge(x, y, z, width, current, last)`
-      * Recursive helper function to draw a sponge with the passed in parameters
-    *  `cube(i, j, k, x, y, z, width)`
-      * Helper function to draw a cube component of a sponge with the passed in parameters
+  * Basic setup for the 3D environment
+  * `render()`
+    * Function to render the sponge as it rotates
+  *  `mengerSponge(x, y, z, width, current, last)`
+    * Recursive helper function to draw a sponge with the passed in parameters
+  *  `cube(i, j, k, x, y, z, width)`
+    * Helper function to draw a cube component of a sponge with the passed in parameters
