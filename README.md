@@ -4,6 +4,8 @@
 ```javascript
 var last = 2;
 ```
+You can take a look at it [here.](http://mengersponge.s3-website-us-east-1.amazonaws.com/)
+
 Higher levels of `last` work, although cause the browser to lag. If you wish, you could download the files and alter the value of `last` to observe said sponge.
 * `last = 0` basic cube, first level menger sponge
 * `last = 1` second level
