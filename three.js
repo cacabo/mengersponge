@@ -1,3 +1,22 @@
+/* * * * * * *
+ * VARIABLES *
+ * * * * * * */
+
+// Adjust the width of the sponge
+var width = 81;
+
+/**
+ * Adjust the depth of recursion
+ * last = 0   // first level / basic cube
+ * last = 1   // second level
+ * last = 2   // third level
+ */
+var last = 2; // Chage me!!
+
+/* * * * * * * * *
+ * BEGIN PROGRAM *
+ * * * * * * * * */
+
 // Renderer
 var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('canvas'), antialias: true});
 renderer.setClearColor(0xE6E6EE);
@@ -12,15 +31,13 @@ scene.add(light1);
 var light2 = new THREE.PointLight(0xffffff, 0.5);
 scene.add(light2);
 
-// Create the menger sponge
+// Create the menger sponge and center it (kind of) on the page
 var parent = new THREE.Object3D();
 parent.position.set(0, 0, -2000);
 scene.add(parent);
-var width = 81;
-var last = 2;
-mengerSponge(-3 * width, -3 * width, 0, width, 1, last);
 
-// Render
+// Render the sponge
+mengerSponge(-3 * width, -3 * width, 0, width, 0, last);
 requestAnimationFrame(render);
 
 function render() {
@@ -41,6 +58,18 @@ function render() {
  * @param last    - last level of recursive depth to be reached
  */
 function mengerSponge(x, y, z, width, current, last) {
+  // Error checking
+  if (last < 0) {
+    alert("Invalid negative last parameter");
+    return;
+  } else if (last > 5) {
+    alert("Last parameter will cause too much lag");
+    return;
+  } else if (last == 0) {
+    cube(0, 0, 0, x, y, z, width * 3);
+    return;
+  }
+
   // iterate over the x axis
   for (var i = 1; i <= 3; i++) {
     // iterate over the y axis
@@ -58,7 +87,7 @@ function mengerSponge(x, y, z, width, current, last) {
         // in the specified area
         if (num2 < 2) {
           // Recurse further if there are more levels
-          if (current < last) {
+          if (current < last - 1) {
             mengerSponge(
               (x + i * width),
               (y + j * width),
@@ -67,7 +96,7 @@ function mengerSponge(x, y, z, width, current, last) {
               (current + 1),
               last
             );
-          } else if (current == last) {
+          } else if (current == last - 1) {
             // Otherwise draw a cube in the specified location
             cube(i, j, k, x, y, z, width);
           }
